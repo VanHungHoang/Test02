@@ -1,0 +1,88 @@
+
+
+ul.list-social > li {
+    padding-bottom: 5px;
+}
+.modal-header {
+    min-height: 16.43px;
+    padding: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+.modal-body{
+  border-bottom: 2px solid #e5e5e5;
+}
+.modal-body .row .col-xs-6{
+  border-left: 2px solid #e5e5e5;  
+}
+    
+.modal-content{
+    height: 376px;
+    background-color: #edeff1;
+}
+.modal-title {
+    margin: 0;
+    line-height: 1.42857143;
+    text-align: center;
+    font-size: 22px;
+}
+.modal-account{
+    line-height: 1.42857143;
+    text-align: center;
+    font-size: 15px;
+    position: relative;
+    top: 10px;
+}
+.modal-account a{
+    line-height: 1.42857143;
+    text-align: center;
+    font-size: 19px;
+    color: #d03a3c;
+}
+.btn-default {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+.btn-primary{
+    color: #fff;
+    background-color: crimson;
+    border-color: #2e6da4;
+}
+.btn-default:hover { 
+    color: white;
+    background-color: #2b85c3 !important;
+}
+.btn-primary:hover{
+    color: white;
+    background-color: #d03a5c !important; 
+}
+.col-md-12{
+    font-size: 16px;
+    position: relative;
+    top: -20px;
+}
+.btn-block{
+    font-size: 16px;
+}
+.col-md-12 p{
+    text-align: center;
+    font-size: 15px;
+    position: relative;
+    top: 10px;
+}
+.col-md-12 p a{
+    color: #d03a3c;
+}
+.fa-times{
+    position: relative;
+    top: -4vh;
+    left: 35vw;
+    font-size: 20px;
+}
+.well {
+    border: none ;
+    background-color: #edeff1;
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: -5px;
+}
