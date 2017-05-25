@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import {Person} from '../person';
-import { ActivatedRoute, Router} from '@angular/router';
+import { Person } from '../person';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PeopleService } from "../people.service";
 
 
@@ -12,17 +12,18 @@ import { PeopleService } from "../people.service";
 })
 export class PersonDetailsComponent implements OnInit {
   person: Person;
-  sub:any;
+  sub: any;
   professions: string[] = ['jedi', 'bounty hunter', 'princess', 'sith lord'];
 
-  constructor(private route:ActivatedRoute,
-              private peopleService:PeopleService,
-              private router: Router) { }
+  constructor(private route: ActivatedRoute,
+    private peopleService: PeopleService,
+    private router: Router) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let id = Number.parseInt(params['id']);
-      this.person = this.peopleService.get(id);
+      console.log('getting person with id: ', id);
+      this.peopleService.get(id).subscribe(p => this.person = p);
     });
   }
 
@@ -30,15 +31,17 @@ export class PersonDetailsComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  gotoPeoplesList(){
-      // let link = ['/persons'];
-      // this.router.navigate(link);
-      window.history.back();
+  gotoPeoplesList() {
+    // let link = ['/persons'];
+    // this.router.navigate(link);
+    window.history.back();
   }
 
 
-  savePersonDetails(){
-    alert(`saved!!! ${JSON.stringify(this.person)}`);
-    this.peopleService.save(this.person);
+  savePersonDetails() {
+    // alert(`saved!!! ${JSON.stringify(this.person)}`);
+    this.peopleService
+        .save(this.person)
+        .subscribe(r=>console.log(`saved!!! ${JSON.stringify(this.person)}`));
   }
 }

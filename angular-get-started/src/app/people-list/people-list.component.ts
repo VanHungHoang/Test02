@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Person} from 'app/person'
-import {PeopleService} from '../people.service'
+import { Person } from 'app/person'
+import { PeopleService } from '../people.service'
 @Component({
   selector: 'app-people-list',
   template: `
@@ -12,7 +12,9 @@ import {PeopleService} from '../people.service'
       </a>
     </li>
     </ul>
-
+    <section *ngIf="errorMessage">
+      {{errorMessage}}
+    </section>
     <!--<app-person-details></app-person-details>-->
     
     
@@ -23,15 +25,23 @@ import {PeopleService} from '../people.service'
 export class PeopleListComponent implements OnInit {
   people: Person[] = [];
   selectedPerson: Person;
-  constructor(private _peopleService: PeopleService) { 
-    
+  errorMessage: string = '';
+  isLoading: boolean = true;
+
+  constructor(private peopleService: PeopleService) {
+
   }
 
   ngOnInit() {
-    this.people = this._peopleService.getAll();
+    this.peopleService
+      .getAll()
+      .subscribe(
+         /* happy path */ p => this.people = p,
+         /* error path */ e => this.errorMessage = e,
+         /* onComplete */ () => this.isLoading = false);
   }
 
-  selectPerson(person){
+  selectPerson(person) {
     this.selectedPerson = person;
   }
 
